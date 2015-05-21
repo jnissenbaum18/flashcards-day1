@@ -1,6 +1,6 @@
 var app = angular.module("FlashCards", [])
 
-app.controller("FlashCardController", function ($scope) {
+app.controller("FlashCardController", function ($scope, $timeout) {
 	// $scope.flashCard = {
 	//     question: 'What is Angular?',
 	//     answers: [
@@ -19,14 +19,16 @@ app.controller("FlashCardController", function ($scope) {
 			$scope.answeredCorrectly = true
 		}
 		
-		$scope.currentIndex++
+		//$scope.currentIndex++
 		
 		console.log($scope.current.question)
 
-		setTimeout(function(){
-			$scope.current = $scope.flashCards[$scope.currentIndex];
+		$timeout(function(){
+			//$scope.current = $scope.flashCards[$scope.currentIndex];
+			$scope.flashCards.push($scope.flashCards.shift())
 			$scope.answered = false;
-			$scope.$digest();
+			$scope.answeredCorrectly = null
+			$scope.current = $scope.flashCards[0]
 		}, 2000)
 	}
 })
@@ -58,6 +60,6 @@ app.controller("MainController", function($scope){
         ]
     }
 	];
-	$scope.currentIndex = 0
-	$scope.current = $scope.flashCards[$scope.currentIndex];
+	//$scope.currentIndex = 0
+	$scope.current = $scope.flashCards[0];
 })
