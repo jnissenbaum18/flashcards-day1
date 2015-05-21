@@ -5,6 +5,7 @@ app.controller("FlashCardController", function ($scope, $timeout) {
 	$scope.answeredCorrectly
 	$scope.answerQuestion = function (answer) {
 
+		if ($scope.answered) return;
 		$scope.answered = true
 		
 		if (answer.correct) {

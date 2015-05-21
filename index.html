@@ -11,7 +11,9 @@
     	<div class="flash-card" ng-controller="FlashCardController">
 		    <h1>{{ current.question }}</h1>
 		    <ul class="flash-card-answers">
-		        <li class="flash-card-answer" ng-repeat="answer in current.answers" ng-click="answerQuestion(answer)">
+		        <li class="flash-card-answer" 
+		        ng-repeat="answer in current.answers" 
+		        ng-click="answerQuestion(answer)">
 		            {{ answer.text }}
 		        </li>
 		    </ul>
